@@ -6,11 +6,10 @@ import Layout from "@/components/Layout";
 
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
+    let paths;
     const res = await fetch('http://localhost:3000/api/Quiz', {
     method: 'GET'
-    })
-    const quizes = await res.json()
-    const paths = quizes.map((quiz)=>{return {params: {quiz: quiz._id}}})
+    }).then(response => response.json()).then(quizes => paths = quizes.map((quiz)=>{return {params: {quiz: quiz._id}}}))
 
     return {
       paths,
