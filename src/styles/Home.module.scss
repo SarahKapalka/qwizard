@@ -1,0 +1,90 @@
+.main{
+    padding: 3rem 2rem;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 640px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .post{
+        box-shadow: 0 0 .95rem -.3rem rgba(0, 0, 0, 0.25);
+        color: rgb(86, 86, 86);
+        border-radius: .5rem;
+        .content{
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: left;
+            gap: 1rem;
+            .subhead{
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                small{
+                    background-color: rgba(0, 0, 0, 0.05);
+                    padding: .5rem 1rem;
+                    border-radius: 20rem;
+                }
+                .buttons{
+                    display: flex;
+                    justify-content: right;
+                    gap: .5rem;
+                    flex-grow: 1;
+                    button{
+                    border-style: none;
+                    border-radius: 50%;
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all;
+                    transition-duration: 0.25s;
+                    }
+                    button:first-of-type{
+                        &:hover{
+                            background-color: rgb(232, 110, 110);
+                        }
+                    }
+                    button:last-of-type{
+                        &:hover{
+                            background-color: rgb(166, 223, 235);
+                        }
+                    }
+                }
+            }
+        }
+       
+        h2{
+            font-size: 1.25rem;
+            margin: 0;
+            padding: 1rem;
+            border-radius: .5rem .5rem 0 0;
+            background-color: rgb(166, 223, 235);
+             a{
+            text-decoration: none;
+            color: rgb(86, 86, 86);
+            transition: all;
+            transition-duration: 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &:hover{
+             text-shadow: .2rem .2rem white;
+             img{
+                transform: translate(-.5rem, 0);
+                transition: all;
+                  transition-duration: 0.25s;
+             }
+            }
+        }
+        }
+    }
+}
