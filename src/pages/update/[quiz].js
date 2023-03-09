@@ -16,10 +16,10 @@ export async function getStaticPaths() {
   
   // `getStaticPaths` requires using `getStaticProps`
   export async function getStaticProps(context) {
+    let quiz;
     const res = await fetch(`http://localhost:3000/api/Quiz?id=${context.params.quiz}`, {
         method: 'GET'
-      })
-      const quiz = await res.json()
+      }).then(response => response.json()).then(quizes => quiz = quizes)
       // By returning { props: { posts } }, the Blog component
       // will receive `posts` as a prop at build time
       return {
