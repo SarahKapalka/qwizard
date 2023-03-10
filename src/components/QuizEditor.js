@@ -44,8 +44,6 @@ function QuizEditor({ mode, quiz }) {
         body: JSON.stringify({ title, description, genre, questions }),
       });
     }
-    
-    setLoading(false);
     router.push('/');
   }
   
@@ -144,7 +142,7 @@ function QuizEditor({ mode, quiz }) {
         {questions.length === 0 && (
           <small>(you must have atleast one question)</small>
         )}
-        <button type="submit" disabled={loading || questions.length === 0 || genre === ""} className={styles.primaryButton}>Submit</button>
+        <button type="submit" disabled={loading || questions.length === 0 || genre === ""} className={styles.primaryButton}>{loading? "Loading..." : "Submit"}</button>
       </form>
     </div>
   )
