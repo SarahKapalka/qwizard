@@ -1,14 +1,22 @@
 import QuizEditor from '@/components/QuizEditor';
 import Layout from '@/components/Layout';
+import dbConnect from 'utils/dbConnect';
+import Quiz from '../../../models/Quiz';
 
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
-  const res = await fetch('https://qwizard-ten.vercel.app/api/Quiz', {
-  method: 'GET'
-  })
-  const quizes = await res.json()
-  const paths = quizes.map((quiz)=>{return {params: {quiz: quiz._id}}})
-
+  dbConnect();
+  let quiz = [];
+  try{
+        const quizes = await Quiz.find({}).then((data) => {
+           quiz= data;
+           console.log(quiz);
+    }); 
+}catch(error) {
+   console.log({ data : 'loading'}, error); 
+}
+    const paths = quiz.map((quiz)=>{return {params: {quiz: quiz.id}}})
+    console.log(paths);
     return {
       paths,
       fallback: false, // can also be true or 'blocking'
@@ -17,10 +25,15 @@ export async function getStaticPaths() {
   
   // `getStaticPaths` requires using `getStaticProps`
   export async function getStaticProps(context) {
-    const res = await fetch(`https://qwizard-ten.vercel.app/api/Quiz?id=${context.params.quiz}`, {
-        method: 'GET'
-      })
-      const quiz = await res.json()
+    let quiz;
+    try{
+      const quizes = await Quiz.findById(context.params.quiz).then((data) => {
+              quiz= JSON.stringify(data);
+              console.log(typeof quiz);
+        }); 
+      }catch(error) {
+      console.log({ data : 'loading'}, error); 
+      }
       // By returning { props: { posts } }, the Blog component
       // will receive `posts` as a prop at build time
       return {
@@ -33,7 +46,7 @@ export async function getStaticPaths() {
 const Post = ({ quiz }) => {
   return (
     <Layout page="update">
-      <QuizEditor mode="edit" quiz={quiz}/>
+      <QuizEditor mode="edit" quiz={JSON.parse(quiz)}/>
     </Layout>
   )
 }
