@@ -12,7 +12,7 @@ function Post({ quizData, i }) {
     const handleDelete = async (x) =>{
         setLoading(true);
         let filter= x._id.toString();
-        let response = await fetch(`http://localhost:3000/api/Quiz?id=${filter}`, {
+        let response = await fetch(`../api/Quiz?id=${filter}`, {
           method: 'DELETE',
         });
         setHideQuiz(true);

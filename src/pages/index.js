@@ -23,7 +23,7 @@ const quizList =JSON.parse(quiz)
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Call an external API endpoint to get posts
   dbConnect();
    let quiz;
