@@ -4,7 +4,7 @@ import Layout from '@/components/Layout';
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
   let paths;
-  const res = await fetch('http://localhost:3000/api/Quiz', {
+  const res = await fetch('https://qwizard-ten.vercel.app/api/Quiz', {
   method: 'GET'
   }).then(response => response.json()).then(quizes => paths = quizes.map((quiz)=>{return {params: {quiz: quiz._id}}}))
 
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   // `getStaticPaths` requires using `getStaticProps`
   export async function getStaticProps(context) {
     let quiz;
-    const res = await fetch(`http://localhost:3000/api/Quiz?id=${context.params.quiz}`, {
+    const res = await fetch(`https://qwizard-ten.vercel.app/api/Quiz?id=${context.params.quiz}`, {
         method: 'GET'
       }).then(response => response.json()).then(quizes => quiz = quizes)
       // By returning { props: { posts } }, the Blog component
