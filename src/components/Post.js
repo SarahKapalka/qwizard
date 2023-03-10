@@ -36,8 +36,8 @@ function Post({ quizData, i }) {
                 <small>{quizData.genre}</small>
                 {i > 0 ? (
                   <div className={styles.buttons}>
-                    <button onClick={() => handleDelete(quizData)} disabled={loading}><img src="trash.svg" /></button>
-                    <button><Link href={`/update/${quizData._id}`}><img src="edit.svg" /></Link></button>
+                    <button onClick={() => handleDelete(quizData)} disabled={loading} className={loading? styles.loading : ''} >{!loading ? <img src="trash.svg" />: <div className="lds-ring"><div></div><div></div><div></div><div></div></div>}</button>
+                    <button><Link href={`/update/${quizData._id}`}><img src="edit.svg" /> </Link></button>
                   </div>
                 ): 
                 <small>sample quiz cannot be altered</small>}

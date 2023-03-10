@@ -48,6 +48,9 @@
                     transition: all;
                     transition-duration: 0.25s;
                     }
+                    .loading{
+                        background-color: rgb(232, 110, 110);
+                    }
                     button:first-of-type{
                         &:hover{
                             background-color: rgb(232, 110, 110);

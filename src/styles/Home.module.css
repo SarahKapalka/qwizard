@@ -42,18 +42,20 @@
   left:0;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .module small{
   color: rgb(187, 64, 64);
 }
 .module > .box{
+  border-radius: .5rem;
   background-color: white;
   max-width: 400px;
   position: relative;
-  top:50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
   padding: 20px;
+  margin: 0 1rem 0 1rem;
 }
 .module form{
   display: flex;
